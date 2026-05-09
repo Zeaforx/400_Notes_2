@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSC404 - DATA MANAGEMENT II/Relational Design Theory.md",
+                "file": "Untitled.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Relational Design Theory"
+              "title": "Untitled"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSC404 - DATA MANAGEMENT II/Relational Design Theory.md",
+                "file": "CSC404 - DATA MANAGEMENT II/Relational Design Theory 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Relational Design Theory"
+              "title": "Relational Design Theory 1"
             }
           }
         ],
@@ -211,8 +211,9 @@
   },
   "active": "2cd1509312e055e2",
   "lastOpenFiles": [
-    "Untitled.md",
     "CSC404 - DATA MANAGEMENT II/Relational Design Theory.md",
+    "CSC404 - DATA MANAGEMENT II/Relational Design Theory 1.md",
+    "Untitled.md",
     "CSC402 - DATA MANAGEMENT II/Relational Design Theory.md",
     "CSC404 - DATA MANAGEMENT II/resources/Relational_Design_Theory.pdf",
     "CSC404 - DATA MANAGEMENT II/resources",

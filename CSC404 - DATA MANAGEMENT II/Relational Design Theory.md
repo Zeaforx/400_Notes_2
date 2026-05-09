@@ -488,7 +488,7 @@ BCNF decomposes into:
 
 ```
 A1(cName, date)
-A2(SSN, cName, major)
+A2(SSN, date, major)
 ```
 
 Now checking the dependency `{SSN, cName} → major` requires **joining A1 and A2** every time you want to verify it — expensive!
@@ -535,20 +535,20 @@ All relational schemas
 
 ### FD vs MVD
 
-||Functional Dependency (FD)|Multivalued Dependency (MVD)|
-|---|---|---|
-|**Notation**|`A → B`|`A ↠ B`|
-|**Meaning**|Same A → same B (one value)|Same A → all combinations of B × rest|
-|**Trivial when**|`B ⊆ A`|`B ⊆ A` or `A ∪ B = all attributes`|
-|**Leads to**|BCNF|4NF|
-|**Splitting on RHS**|✓ Yes|✗ Not always|
-|**Relationship**|FD is a special case of MVD|MVD is the more general concept|
+| _                    | Functional Dependency (FD)  | Multivalued Dependency (MVD)          |
+| -------------------- | --------------------------- | ------------------------------------- |
+| **Notation**         | `A → B`                     | `A ↠ B`                               |
+| **Meaning**          | Same A → same B (one value) | Same A → all combinations of B × rest |
+| **Trivial when**     | `B ⊆ A`                     | `B ⊆ A` or `A ∪ B = all attributes`   |
+| **Leads to**         | BCNF                        | 4NF                                   |
+| **Splitting on RHS** | ✓ Yes                       | ✗ Not always                          |
+| **Relationship**     | FD is a special case of MVD | MVD is the more general concept       |
 
 ---
 
 ### BCNF vs 4NF
 
-||BCNF|4NF|
+|_|BCNF|4NF|
 |---|---|---|
 |**Based on**|FDs only|FDs + MVDs|
 |**Rule**|Every non-trivial FD must have key on LHS|Every non-trivial MVD must have key on LHS|
@@ -578,16 +578,16 @@ All relational schemas
 
 ### Key Definitions at a Glance
 
-|Term|Definition|
-|---|---|
-|**Functional Dependency `A → B`**|Knowing A tells you exactly what B is|
-|**Closure `A⁺`**|All attributes functionally determined by A|
-|**Key**|An attribute set whose closure = all attributes|
-|**BCNF**|Every non-trivial FD has a key on the left|
-|**Multivalued Dependency `A ↠ B`**|A determines a _set_ of B values, independent of other attributes|
-|**4NF**|Every non-trivial MVD has a key on the left|
-|**Lossless decomposition**|The original relation can be fully recovered by joining the decomposed parts|
-|**Denormalisation**|Intentionally violating a normal form for performance reasons|
+| Term                               | Definition                                                                   |
+| ---------------------------------- | ---------------------------------------------------------------------------- |
+| **Functional Dependency `A → B`**  | Knowing A tells you exactly what B is                                        |
+| **Closure `A⁺`**                   | All attributes functionally determined by A                                  |
+| **Key**                            | An attribute set whose closure = all attributes                              |
+| **BCNF**                           | Every non-trivial FD has a key on the left                                   |
+| **Multivalued Dependency `A ↠ B`** | A determines a _set_ of B values, independent of other attributes            |
+| **4NF**                            | Every non-trivial MVD has a key on the left                                  |
+| **Lossless decomposition**         | The original relation can be fully recovered by joining the decomposed parts |
+| **Denormalisation**                | Intentionally violating a normal form for performance reasons                |
 
 ---
 
