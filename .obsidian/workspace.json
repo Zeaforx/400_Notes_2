@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSC482 - MODELLING AND SIMULATION/WEEK_1_Improved.md",
+                "file": "CSC452 - FORMAL METHODS/Formal Models of Computation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "WEEK_1_Improved"
+              "title": "Formal Models of Computation"
             }
           }
         ],
@@ -237,16 +237,25 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a11379fc69d9647f",
+  "active": "1044f110f49ee92a",
   "lastOpenFiles": [
+    "CSC404 - DATA MANAGEMENT II/Relational_Design_Theory.pdf",
+    "CSC404 - DATA MANAGEMENT II/CSC404_Full_Incomplete_Lecture_Notes.pdf",
+    "CSC404 - DATA MANAGEMENT II/resources/CSC404_Full_Incomplete_Lecture_Notes (1).pdf",
+    "CSC404 - DATA MANAGEMENT II/resources/CSC404_Full_Incomplete_Lecture_Notes.pdf",
+    "CSC452 - FORMAL METHODS/formal proofs-1.md",
+    "CSC452 - FORMAL METHODS/Formal Models of Computation.md",
+    "CSC452 - FORMAL METHODS/CSC 452 Formal Models of Co ENoteA.pdf",
+    "CSC452 - FORMAL METHODS/Languages.md",
+    "CSC452 - FORMAL METHODS/Formal Proofs.md",
+    "CSC452 - FORMAL METHODS/Parity Bits.md",
+    "CSC482 - MODELLING AND SIMULATION/WEEK_1_Improved.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK 3.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK_3_Improved.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK_2_Improved.md",
-    "CSC482 - MODELLING AND SIMULATION/WEEK_1_Improved.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK 2.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK 1.md",
     "CSC482 - MODELLING AND SIMULATION",
-    "CSC452 - FORMAL METHODS/Formal Models of Computation.md",
     "CSC404 - DATA MANAGEMENT II/Relational Design Theory.md",
     "CSC404 - DATA MANAGEMENT II/Relational Design Theory 1.md",
     "Untitled.canvas",
@@ -255,17 +264,11 @@
     "CSC404 - DATA MANAGEMENT II/resources/Relational_Design_Theory.pdf",
     "CSC404 - DATA MANAGEMENT II/resources",
     "CSC404 - DATA MANAGEMENT II",
-    "CSC452 - FORMAL METHODS/Parity Bits.md",
-    "CSC452 - FORMAL METHODS/Formal Proofs.md",
     "CSC452 - FORMAL METHODS",
     "CSC404 - FORMAL METHODS/Parity Bits.md",
     "CSC404 - FORMAL METHODS/Formal Proofs.md",
     "CSC404 - FORMAL METHODS",
-    "CSC402 - DATA MANAGEMENT II/resources",
-    "CSC402 - DATA MANAGEMENT II/Relational_Design_Theory (1).pdf",
-    "CSC402 - DATA MANAGEMENT II/resources/Relational_Design_Theory.pdf",
     "CSC4XX-FORMAL METHODS/Parity Bits.md",
-    "CSC402 - DATA MANAGEMENT II",
     "CSC4XX-FORMAL METHODS/Formal Proofs.md"
   ]
 }
