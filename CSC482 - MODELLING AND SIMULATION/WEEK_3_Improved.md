@@ -231,13 +231,13 @@ The **correlation coefficient** is a single number that tells you **how strongly
 
 The coefficient $r$ always falls in the range $[-1, +1]$:
 
-| Value | Meaning |
-|-------|---------|
-| $r = +1$ | **Perfect positive correlation** — both variables increase together exactly in step. |
-| $0 < r < 1$ | Positive correlation — they tend to increase together. |
-| $r = 0$ | **No linear relationship** — knowing one tells you nothing linear about the other. |
-| $-1 < r < 0$ | Negative correlation — when one increases, the other tends to decrease. |
-| $r = -1$ | **Perfect negative correlation** — exact inverse relationship. |
+| Value        | Meaning                                                                              |
+| ------------ | ------------------------------------------------------------------------------------ |
+| $r = +1$     | **Perfect positive correlation** — both variables increase together exactly in step. |
+| $0 < r < 1$  | Positive correlation — they tend to increase together.                               |
+| $r = 0$      | **No linear relationship** — knowing one tells you nothing linear about the other.   |
+| $-1 < r < 0$ | Negative correlation — when one increases, the other tends to decrease.              |
+| $r = -1$     | **Perfect negative correlation** — exact inverse relationship.                       |
 
 ### Rough Strength Guide
 
@@ -331,13 +331,13 @@ $$\bar{x} = \frac{15}{5} = 3, \quad \bar{y} = \frac{300}{5} = 60$$
 Then build the deviation table:
 
 | $x - \bar{x}$ | $y - \bar{y}$ | $(x - \bar{x})^2$ | $(y - \bar{y})^2$ | $(x - \bar{x})(y - \bar{y})$ |
-|------|------|------|------|------|
-| -2   | -20  | 4    | 400  | 40   |
-| -1   | -10  | 1    | 100  | 10   |
-| 0    | 0    | 0    | 0    | 0    |
-| 1    | 10   | 1    | 100  | 10   |
-| 2    | 20   | 4    | 400  | 40   |
-| **0** | **0** | **10** | **1,000** | **100** |
+| ------------- | ------------- | ----------------- | ----------------- | ---------------------------- |
+| -2            | -20           | 4                 | 400               | 40                           |
+| -1            | -10           | 1                 | 100               | 10                           |
+| 0             | 0             | 0                 | 0                 | 0                            |
+| 1             | 10            | 1                 | 100               | 10                           |
+| 2             | 20            | 4                 | 400               | 40                           |
+| **0**         | **0**         | **10**            | **1,000**         | **100**                      |
 
 (Note: the deviation columns always sum to zero — a useful check.)
 
