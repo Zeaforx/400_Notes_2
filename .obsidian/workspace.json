@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSC482 - MODELLING AND SIMULATION/WEEK_4_Improved.md",
+                "file": "CSC482 - MODELLING AND SIMULATION/WEEK_3_Improved.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "WEEK_4_Improved"
+              "title": "WEEK_3_Improved"
             }
           }
         ],
@@ -251,15 +251,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "03c3c458d7b3e820",
+  "active": "1044f110f49ee92a",
   "lastOpenFiles": [
-    "CSC482 - MODELLING AND SIMULATION/WEEK 4.md",
-    "CSC482 - MODELLING AND SIMULATION/WEEK_4_Improved.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK3 Relational Design Theory.md",
+    "CSC482 - MODELLING AND SIMULATION/Questions.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK2 relational-algebra-notes-part2.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK1 relational-algebra-notes.md",
+    "CSC482 - MODELLING AND SIMULATION/WEEK_3_Improved.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK_2_Improved.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK_1_Improved.md",
     "Untitled.md",
+    "CSC482 - MODELLING AND SIMULATION/WEEK 4.md",
+    "CSC482 - MODELLING AND SIMULATION/WEEK_4_Improved.md",
     "Untitled 1.md",
-    "CSC482 - MODELLING AND SIMULATION/WEEK_3_Improved.md",
     "CSC452 - FORMAL METHODS/Formal Models of Computation.md",
     "CSC404 - DATA MANAGEMENT II/Relational_Design_Theory.pdf",
     "CSC404 - DATA MANAGEMENT II/CSC404_Full_Incomplete_Lecture_Notes.pdf",
@@ -274,7 +278,6 @@
     "CSC482 - MODELLING AND SIMULATION/WEEK 2.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK 1.md",
     "CSC482 - MODELLING AND SIMULATION",
-    "CSC404 - DATA MANAGEMENT II/Relational Design Theory.md",
     "CSC404 - DATA MANAGEMENT II/Relational Design Theory 1.md",
     "Untitled.canvas",
     "CSC402 - DATA MANAGEMENT II/Relational Design Theory.md",
