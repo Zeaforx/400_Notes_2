@@ -1,13 +1,12 @@
 # Relational Algebra — Part 1: Basics & Core Operators
 
-> Study notes based on the Stanford relational algebra lecture (Video 1 of 2).
-> Covers the query language fundamentals and the most common operators.
+> Study notes based on the Stanford relational algebra lecture (Video 1 of 2). Covers the query language fundamentals and the most common operators.
 
 ---
 
 ## 1. What Is Relational Algebra?
 
-**Relational algebra** is a *formal language* — a mathematical algebra that forms the theoretical underpinning of implemented query languages like **SQL**.
+**Relational algebra** is a _formal language_ — a mathematical algebra that forms the theoretical underpinning of implemented query languages like **SQL**.
 
 Two key properties to remember:
 
@@ -19,9 +18,9 @@ Because the output of a query is itself a relation, you can:
 - Feed that result into **another query**, or
 - **Combine** it with other existing relations.
 
-This *closure property* (input is a relation, output is a relation) is what makes operators **composable** — you can stack them freely.
+This _closure property_ (input is a relation, output is a relation) is what makes operators **composable** — you can stack them freely.
 
-> **Context — "relation" vs "table":** A *relation* is the formal term for what SQL calls a *table*. A *tuple* = a row; an *attribute* = a column; the *schema* = the set of attribute names (the table's column structure).
+> **Context — "relation" vs "table":** A _relation_ is the formal term for what SQL calls a _table_. A _tuple_ = a row; an _attribute_ = a column; the _schema_ = the set of attribute names (the table's column structure).
 
 ---
 
@@ -29,36 +28,82 @@ This *closure property* (input is a relation, output is a relation) is what make
 
 All examples use a simple **college admissions** database with three relations. Keep this picture in mind throughout.
 
-### `College`
-| Attribute | Meaning |
-|-----------|---------|
-| **cName** *(key)* | College name |
-| state | State the college is in |
-| enrollment | Number of students enrolled |
+### Schemas
 
-### `Student`
-| Attribute | Meaning |
-|-----------|---------|
-| **sID** *(key)* | Student ID |
-| sName | Student name |
-| GPA | Grade point average |
-| sizeHS | Size of the high school attended |
+#### `College`
 
-### `Apply`
-| Attribute | Meaning |
-|-----------|---------|
-| **sID** *(part of key)* | Student ID (who is applying) |
-| **cName** *(part of key)* | College applied to |
-| **major** *(part of key)* | Major applied for |
-| decision | Application outcome (e.g., **Y** = accept, **R** = reject) |
+|Attribute|Meaning|
+|---|---|
+|**cName** _(key)_|College name|
+|state|State the college is in|
+|enrollment|Number of students enrolled|
 
-> **Keys are underlined in the lecture (shown in bold here).** A **key** is an attribute (or set of attributes) whose value is *guaranteed to be unique* across the relation.
+#### `Student`
+
+|Attribute|Meaning|
+|---|---|
+|**sID** _(key)_|Student ID|
+|sName|Student name|
+|GPA|Grade point average|
+|sizeHS|Size of the high school attended|
+
+#### `Apply`
+
+|Attribute|Meaning|
+|---|---|
+|**sID** _(part of key)_|Student ID (who is applying)|
+|**cName** _(part of key)_|College applied to|
+|**major** _(part of key)_|Major applied for|
+|decision|Application outcome (e.g., **Y** = accept, **N** = no, **R** = reject)|
+
+> **Keys are underlined in the lecture (shown in bold here).** A **key** is an attribute (or set of attributes) whose value is _guaranteed to be unique_ across the relation.
 
 **Key assumptions for this database:**
 
 - College names are unique → `cName` is the key of `College`.
 - Student IDs are unique → `sID` is the key of `Student`.
-- A student applies to a given college for a given major **only once** → the key of `Apply` is the *combination* `(sID, cName, major)`. This is called a **composite key.**
+- A student applies to a given college for a given major **only once** → the key of `Apply` is the _combination_ `(sID, cName, major)`. This is called a **composite key.**
+
+### Sample data — use these tables to trace every example below
+
+**`College`**
+
+|cName|state|enrollment|
+|---|---|---|
+|Stanford|CA|21000|
+|Berkeley|CA|36000|
+|MIT|MA|11000|
+|Cornell|NY|21000|
+|Harvard|MA|22000|
+
+**`Student`**
+
+|sID|sName|GPA|sizeHS|
+|---|---|---|---|
+|123|Amy|3.9|800|
+|234|Bob|3.6|1500|
+|345|Craig|3.5|500|
+|456|Doris|3.9|1000|
+|567|Edward|2.9|2000|
+|678|Fay|3.8|200|
+|789|Gary|3.4|800|
+
+**`Apply`**
+
+|sID|cName|major|decision|
+|---|---|---|---|
+|123|Stanford|CS|Y|
+|123|Stanford|EE|N|
+|123|Berkeley|CS|Y|
+|234|Berkeley|biology|N|
+|234|Stanford|CS|R|
+|345|MIT|bioengineering|Y|
+|345|Cornell|bioengineering|N|
+|345|Cornell|CS|Y|
+|345|Cornell|EE|R|
+|456|Stanford|CS|N|
+|678|Stanford|history|Y|
+|789|Cornell|CS|R|
 
 ---
 
@@ -70,7 +115,7 @@ The simplest valid relational algebra expression is just the **name of a relatio
 Student
 ```
 
-Running this returns a **copy of the entire `Student` relation**. Straightforward — but it's the base case that every more complex expression builds on.
+Running this returns a **copy of the entire `Student` relation** (the 7-row table above). Straightforward — but it's the base case that every more complex expression builds on.
 
 From here, we apply **operators** to **filter**, **slice**, and **combine** relations.
 
@@ -81,21 +126,29 @@ From here, we apply **operators** to **filter**, **slice**, and **combine** rela
 The **select** operator picks **certain rows (tuples)** out of a relation based on a condition.
 
 - **Symbol:** σ (Greek sigma)
-- **Subscript:** the *condition* used to filter rows
+- **Subscript:** the _condition_ used to filter rows
 - **Form:** `σ_condition (Relation)`
 
 > **Memory aid:** **Sel**ect → **S**igma → picks rows (horizontal slice).
 
 ### Example 1 — single condition
+
 Find students whose GPA is greater than 3.7:
 
 ```
 σ_(GPA > 3.7) (Student)
 ```
 
-Returns the subset of `Student` rows where GPA > 3.7.
+**Result:** keep rows where GPA > 3.7. Amy (3.9), Doris (3.9), Fay (3.8) qualify.
+
+|sID|sName|GPA|sizeHS|
+|---|---|---|---|
+|123|Amy|3.9|800|
+|456|Doris|3.9|1000|
+|678|Fay|3.8|200|
 
 ### Example 2 — two conditions (AND)
+
 Combine conditions using the logical AND operator **∧** (a caret `^`):
 
 Find students with GPA > 3.7 **and** high school size < 1000:
@@ -104,14 +157,31 @@ Find students with GPA > 3.7 **and** high school size < 1000:
 σ_(GPA > 3.7 ∧ sizeHS < 1000) (Student)
 ```
 
+**Result:** of the three high-GPA students, Doris's `sizeHS` is 1000 (not strictly less), so she drops out.
+
+|sID|sName|GPA|sizeHS|
+|---|---|---|---|
+|123|Amy|3.9|800|
+|678|Fay|3.8|200|
+
 ### Example 3 — condition on another relation
+
 Find applications to Stanford for a CS major:
 
 ```
 σ_(cName = 'Stanford' ∧ major = 'CS') (Apply)
 ```
 
+**Result:**
+
+|sID|cName|major|decision|
+|---|---|---|---|
+|123|Stanford|CS|Y|
+|234|Stanford|CS|R|
+|456|Stanford|CS|N|
+
 ### General form
+
 ```
 σ_condition (Relation)   →   subset of the relation's rows
 ```
@@ -125,21 +195,40 @@ Find applications to Stanford for a CS major:
 The **project** operator picks **certain columns (attributes)** from a relation. Where `select` slices horizontally (rows), `project` slices vertically (columns).
 
 - **Symbol:** π (Greek pi)
-- **Subscript:** the *list of column names* to keep
+- **Subscript:** the _list of column names_ to keep
 - **Form:** `π_(attr1, attr2, ...) (Relation)`
 
 > **Memory aid:** **P**roject → **P**i → **P**icks columns.
 
 ### Example
+
 Get just the student IDs and decisions from all applications:
 
 ```
 π_(sID, decision) (Apply)
 ```
 
-This keeps **all the tuples** of `Apply`, but **only the `sID` and `decision` columns.**
+This keeps **all the tuples** of `Apply`, but **only the `sID` and `decision` columns** — _and_ eliminates duplicates (see §7).
+
+**Result:** the 12 application rows collapse to these distinct `(sID, decision)` pairs:
+
+|sID|decision|
+|---|---|
+|123|Y|
+|123|N|
+|234|N|
+|234|R|
+|345|Y|
+|345|N|
+|345|R|
+|456|N|
+|678|Y|
+|789|R|
+
+> Notice student 123 originally had three rows (Y, N, Y); after projecting away `cName` and `major`, the two `(123, Y)` tuples become duplicates and merge into one.
 
 ### General form
+
 ```
 π_(list of attributes) (Relation)
 ```
@@ -148,7 +237,7 @@ This keeps **all the tuples** of `Apply`, but **only the `sID` and `decision` co
 
 ## 6. Composing Operators (Rows AND Columns)
 
-Because every query produces a relation, operators can be **nested**. This lets us pick *some rows* **and** *some columns* at once.
+Because every query produces a relation, operators can be **nested**. This lets us pick _some rows_ **and** _some columns_ at once.
 
 Find the IDs and names of students with GPA > 3.7:
 
@@ -157,12 +246,26 @@ Find the IDs and names of students with GPA > 3.7:
 ```
 
 Read inside-out:
-1. `σ_(GPA > 3.7) (Student)` → rows with high GPA.
-2. `π_(sID, sName) (...)` → keep only the ID and name columns.
 
-### The *real* general form (the "slight deception")
+**Step 1 —** `σ_(GPA > 3.7) (Student)` → rows with high GPA:
 
-The lecture admits the earlier definitions were simplified. The operators don't just apply to a *relation name* — they apply to **any relational algebra expression**:
+|sID|sName|GPA|sizeHS|
+|---|---|---|---|
+|123|Amy|3.9|800|
+|456|Doris|3.9|1000|
+|678|Fay|3.8|200|
+
+**Step 2 —** `π_(sID, sName) (...)` → keep only the ID and name columns:
+
+|sID|sName|
+|---|---|
+|123|Amy|
+|456|Doris|
+|678|Fay|
+
+### The _real_ general form (the "slight deception")
+
+The lecture admits the earlier definitions were simplified. The operators don't just apply to a _relation name_ — they apply to **any relational algebra expression**:
 
 ```
 σ_condition ( <any expression> )
@@ -181,14 +284,28 @@ Consider listing every major applied for and its decision:
 π_(major, decision) (Apply)
 ```
 
-You might expect many repeats (CS/Y, CS/Y, CS/N, EE/Y, …).
+In the raw 12-row `Apply`, the pair `(CS, Y)` occurs multiple times (123→Stanford CS Y _and_ 123→Berkeley CS Y _and_ 345→Cornell CS Y), and `(CS, R)` occurs twice (234→Stanford and 789→Cornell).
 
 **Relational algebra eliminates duplicates automatically.** Each distinct result appears **exactly once**.
 
-| Model | Duplicates? | Used by |
-|-------|-------------|---------|
-| **Set** semantics | Eliminated | **Relational algebra** (this course) |
-| **Multiset / Bag** semantics | Kept | **SQL** |
+|major|decision|
+|---|---|
+|CS|Y|
+|EE|N|
+|biology|N|
+|CS|R|
+|bioengineering|Y|
+|bioengineering|N|
+|EE|R|
+|CS|N|
+|history|Y|
+
+12 raw projected rows → **9 distinct rows.**
+
+|Model|Duplicates?|Used by|
+|---|---|---|
+|**Set** semantics|Eliminated|**Relational algebra** (this course)|
+|**Multiset / Bag** semantics|Kept|**SQL**|
 
 > **Important real-world note:** SQL is based on **multisets (bags)** and does **not** remove duplicates by default — you must write `SELECT DISTINCT`. A bag-based relational algebra exists too, but these notes use **set** semantics throughout.
 
@@ -203,25 +320,79 @@ What it does: "glues" two relations together.
 - **Resulting schema** = the **union** of the two relations' schemas (all columns from both).
 - **Resulting contents** = **every combination** of one tuple from the first with one tuple from the second.
 
+### Abstract illustration
+
+Suppose `R₁(A, B)` and `R₂(C, D)`:
+
+`R₁`
+
+|A|B|
+|---|---|
+|a₁|b₁|
+|a₂|b₂|
+
+`R₂`
+
+|C|D|
+|---|---|
+|c₁|d₁|
+|c₂|d₂|
+
+`R₁ × R₂` — every row of `R₁` paired with every row of `R₂` (2 × 2 = 4 rows, 4 columns):
+
+|A|B|C|D|
+|---|---|---|---|
+|a₁|b₁|c₁|d₁|
+|a₁|b₁|c₂|d₂|
+|a₂|b₂|c₁|d₁|
+|a₂|b₂|c₂|d₂|
+
 ### Size of the result
+
 If `Student` has **S** tuples and `Apply` has **A** tuples, then:
 
 ```
 Student × Apply   →   S × A tuples
 ```
 
-One row for *every possible pairing*.
+In our database, that's **7 × 12 = 84 tuples**, each with **8 attributes**.
 
 ### Schema with eight attributes — and naming clashes
-`Student` (4 attributes) × `Apply` (4 attributes) = a result with **8 attributes.**
 
-Both relations contain an `sID` attribute. To disambiguate, columns are **prefixed with the relation name**:
+Both `Student` and `Apply` contain an `sID` attribute. To disambiguate, columns are **prefixed with the relation name**:
 
 ```
 Student.sID   vs   Apply.sID
 ```
 
-> **Why bother with cross-product?** On its own it produces a lot of meaningless pairings (every student matched with every application, even unrelated ones). Its power appears when **combined with `select`** to keep only the meaningful combinations.
+### Concrete mini cross-product
+
+To keep the table viewable, let's cross-product just the first 2 rows of each relation:
+
+`Student` (first 2 rows)
+
+|sID|sName|GPA|sizeHS|
+|---|---|---|---|
+|123|Amy|3.9|800|
+|234|Bob|3.6|1500|
+
+`Apply` (first 2 rows)
+
+|sID|cName|major|decision|
+|---|---|---|---|
+|123|Stanford|CS|Y|
+|123|Stanford|EE|N|
+
+`Student × Apply` (2 × 2 = 4 rows, 8 columns):
+
+|Student.sID|sName|GPA|sizeHS|Apply.sID|cName|major|decision|
+|---|---|---|---|---|---|---|---|
+|123|Amy|3.9|800|123|Stanford|CS|Y|
+|123|Amy|3.9|800|123|Stanford|EE|N|
+|234|Bob|3.6|1500|123|Stanford|CS|Y|
+|234|Bob|3.6|1500|123|Stanford|EE|N|
+
+> **Why bother with cross-product?** Look at row 3: it pairs _Bob_ (sID 234) with _Amy's_ application (sID 123) — meaningless. On its own, cross-product produces lots of nonsense pairings. Its power appears when **combined with `select`** to keep only the meaningful combinations (the ones where `Student.sID = Apply.sID`).
 
 ---
 
@@ -235,15 +406,18 @@ We need data from both `Student` and `Apply`, so start with their cross-product:
 Student × Apply
 ```
 
-This gives an 8-attribute relation with every student–application pairing. Now filter it down with a big selection:
+This gives the 84-row, 8-attribute relation. Now filter it down with a big selection:
 
 **Step 1 — match real pairings only** (the same student in both halves):
+
 ```
 σ_(Student.sID = Apply.sID) (Student × Apply)
 ```
-Without this, we'd keep nonsensical rows pairing a student with someone *else's* application.
+
+Without this, we'd keep nonsensical rows pairing a student with someone _else's_ application.
 
 **Step 2 — add the remaining filters:**
+
 ```
 σ_(Student.sID = Apply.sID
    ∧ sizeHS > 1000
@@ -252,7 +426,20 @@ Without this, we'd keep nonsensical rows pairing a student with someone *else's*
   (Student × Apply)
 ```
 
+Tracing through our data:
+
+- `sizeHS > 1000` keeps Bob (1500) and Edward (2000).
+- `major = 'CS' ∧ decision = 'R'` keeps `(234, Stanford, CS, R)` and `(789, Cornell, CS, R)`.
+- Joining on `sID`: only Bob (234) satisfies both halves.
+
+**Intermediate table (after Step 2):**
+
+|Student.sID|sName|GPA|sizeHS|Apply.sID|cName|major|decision|
+|---|---|---|---|---|---|---|---|
+|234|Bob|3.6|1500|234|Stanford|CS|R|
+
 **Step 3 — keep only name and GPA:**
+
 ```
 π_(sName, GPA) (
   σ_(Student.sID = Apply.sID
@@ -263,7 +450,13 @@ Without this, we'd keep nonsensical rows pairing a student with someone *else's*
 )
 ```
 
-This full expression answers the English query. Note how essential the `Student.sID = Apply.sID` "join condition" is — it's what makes the combination meaningful.
+**Final result:**
+
+|sName|GPA|
+|---|---|
+|Bob|3.6|
+
+Note how essential the `Student.sID = Apply.sID` "join condition" is — it's what makes the combination meaningful.
 
 ---
 
@@ -279,11 +472,56 @@ The pattern above (cross-product + equality on shared attributes) is so common t
 2. **Enforces equality** on **all attributes that share the same name** in both relations.
 3. **Removes the duplicate columns** (keeps one copy of each shared attribute, since the values are guaranteed equal anyway).
 
-> **Why duplicates can be dropped:** If `Student.sID` *must equal* `Apply.sID` for a row to survive, keeping both columns is redundant — they're always identical. So the join keeps a single `sID` column.
+> **Why duplicates can be dropped:** If `Student.sID` _must equal_ `Apply.sID` for a row to survive, keeping both columns is redundant — they're always identical. So the join keeps a single `sID` column.
 
-### Same query, rewritten with natural join
+### Abstract illustration
 
-Because `Student` and `Apply` share `sID`, the join handles the matching automatically — we no longer write the `Student.sID = Apply.sID` condition ourselves:
+Suppose `R₁(A, B)` and `R₂(B, C)` share attribute `B`:
+
+`R₁`
+
+|A|B|
+|---|---|
+|a₁|b₁|
+|a₂|b₂|
+
+`R₂`
+
+|B|C|
+|---|---|
+|b₁|c₁|
+|b₃|c₂|
+
+`R₁ ⋈ R₂` — only `b₁` matches, and the duplicate `B` column collapses to one:
+
+|A|B|C|
+|---|---|---|
+|a₁|b₁|c₁|
+
+> **Edge case:** If two relations share **no** attribute names, the natural join degenerates into the plain cross-product (no equality to enforce, no columns to drop).
+
+### Concrete: `Student ⋈ Apply`
+
+Both share `sID`, so the join keeps only rows where `sID` matches, and outputs **7 attributes** (not 8):
+
+|sID|sName|GPA|sizeHS|cName|major|decision|
+|---|---|---|---|---|---|---|
+|123|Amy|3.9|800|Stanford|CS|Y|
+|123|Amy|3.9|800|Stanford|EE|N|
+|123|Amy|3.9|800|Berkeley|CS|Y|
+|234|Bob|3.6|1500|Berkeley|biology|N|
+|234|Bob|3.6|1500|Stanford|CS|R|
+|345|Craig|3.5|500|MIT|bioengineering|Y|
+|345|Craig|3.5|500|Cornell|bioengineering|N|
+|345|Craig|3.5|500|Cornell|CS|Y|
+|345|Craig|3.5|500|Cornell|EE|R|
+|456|Doris|3.9|1000|Stanford|CS|N|
+|678|Fay|3.8|200|Stanford|history|Y|
+|789|Gary|3.4|800|Cornell|CS|R|
+
+> Edward (567) is gone — he doesn't appear in `Apply`, so no natural-join row exists for him.
+
+### Same worked query, rewritten with natural join
 
 ```
 π_(sName, GPA) (
@@ -291,6 +529,12 @@ Because `Student` and `Apply` share `sID`, the join handles the matching automat
     (Student ⋈ Apply)
 )
 ```
+
+**Trace:** apply the σ filter to the joined table above — only row `(234, Bob, 3.6, 1500, Stanford, CS, R)` qualifies — then project `sName, GPA`:
+
+|sName|GPA|
+|---|---|
+|Bob|3.6|
 
 Cleaner than the cross-product version. **Setting up your schemas with consistent attribute names makes natural join very powerful.**
 
@@ -310,7 +554,13 @@ So far we used `Student` and `Apply` but not `College`. Bring it in by joining a
 - `Student ⋈ Apply` matches on shared `sID`.
 - `... ⋈ College` matches on shared `cName` (both `Apply` and `College` have `cName`).
 
-> **Associativity:** Natural join is technically a *binary* operator, but it's **associative**, so people usually write `A ⋈ B ⋈ C` without parentheses. Being pedantic, you *could* write `(A ⋈ B) ⋈ C`.
+`Student ⋈ Apply ⋈ College` (8 attributes — `sID, sName, GPA, sizeHS, cName, major, decision, state, enrollment`). Filtering with the new condition: Bob applied to Stanford (enrollment 21000 > 20000) — still qualifies. **Result unchanged for our data:**
+
+|sName|GPA|
+|---|---|
+|Bob|3.6|
+
+> **Associativity:** Natural join is technically a _binary_ operator, but it's **associative**, so people usually write `A ⋈ B ⋈ C` without parentheses. Being pedantic, you _could_ write `(A ⋈ B) ⋈ C`.
 
 ### Natural join adds no expressive power
 
@@ -327,6 +577,7 @@ E1 ⋈ E2  ≡  π_(schema(E1) ∪ schema(E2)) (
 ```
 
 Where:
+
 - `schema(E1) ∪ schema(E2)` is a **true set union** — shared attribute names appear **once** (this achieves the duplicate-column removal).
 - `A1, A2, ...` are the attributes that share the same name in both expressions (this achieves the equality enforcement).
 
@@ -346,13 +597,32 @@ The **theta join** combines two expressions with an **arbitrary condition θ** (
 E1 ⋈_θ E2  ≡  σ_θ (E1 × E2)
 ```
 
+### Mini example
+
+Pair each student with each application **only when** the student's GPA is high _and_ the application is to Stanford:
+
+```
+Student ⋈_(Student.sID = Apply.sID ∧ GPA ≥ 3.8 ∧ cName = 'Stanford') Apply
+```
+
+Walking through: only Amy (3.9) and Fay (3.8) meet the GPA bar; of those, both have Stanford applications.
+
+|Student.sID|sName|GPA|sizeHS|Apply.sID|cName|major|decision|
+|---|---|---|---|---|---|---|---|
+|123|Amy|3.9|800|123|Stanford|CS|Y|
+|123|Amy|3.9|800|123|Stanford|EE|N|
+|678|Fay|3.8|200|678|Stanford|history|Y|
+
+> Theta join keeps **both** `sID` columns (no auto-dedup, unlike natural join).
+
 Like natural join, theta join **adds no expressive power** — it's an abbreviation.
 
-> **Why it matters in practice:** Most **database management systems implement the theta join as their fundamental operation** for combining relations: *take two relations, form all tuple combinations, keep only those passing condition θ.* When database practitioners say **"join,"** they usually mean **theta join.**
+> **Why it matters in practice:** Most **database management systems implement the theta join as their fundamental operation** for combining relations: _take two relations, form all tuple combinations, keep only those passing condition θ._ When database practitioners say **"join,"** they usually mean **theta join.**
 
 **Distinction to remember:**
-- **Natural join** matches automatically on *equal, same-named* attributes and removes duplicate columns.
-- **Theta join** uses *any explicit condition* you supply (e.g., `Student.GPA > 3.5`, `A.x ≤ B.y`) and does **not** auto-remove columns.
+
+- **Natural join** matches automatically on _equal, same-named_ attributes and removes duplicate columns.
+- **Theta join** uses _any explicit condition_ you supply (e.g., `Student.GPA > 3.5`, `A.x ≤ B.y`) and does **not** auto-remove columns.
 
 ---
 
@@ -360,13 +630,13 @@ Like natural join, theta join **adds no expressive power** — it's an abbreviat
 
 Relational algebra is a **formal language** that **operates on relations and produces relations.** The simplest query is just a relation name; **operators** then filter, slice, and combine relations.
 
-| Operator | Symbol | Purpose | Adds expressive power? |
-|----------|--------|---------|------------------------|
-| **Select** | σ | Pick **rows** matching a condition | Yes (core) |
-| **Project** | π | Pick **columns** (attributes) | Yes (core) |
-| **Cross-product** | × | Combine **every pair** of tuples from two relations | Yes (core) |
-| **Natural join** | ⋈ | Combine relations, auto-matching same-named attributes & dropping duplicate columns | No (abbreviation) |
-| **Theta join** | ⋈_θ | Cross-product filtered by an arbitrary condition θ | No (abbreviation) |
+|Operator|Symbol|Purpose|Adds expressive power?|
+|---|---|---|---|
+|**Select**|σ|Pick **rows** matching a condition|Yes (core)|
+|**Project**|π|Pick **columns** (attributes)|Yes (core)|
+|**Cross-product**|×|Combine **every pair** of tuples from two relations|Yes (core)|
+|**Natural join**|⋈|Combine relations, auto-matching same-named attributes & dropping duplicate columns|No (abbreviation)|
+|**Theta join**|⋈_θ|Cross-product filtered by an arbitrary condition θ|No (abbreviation)|
 
 **Key takeaways:**
 
@@ -374,20 +644,21 @@ Relational algebra is a **formal language** that **operates on relations and pro
 - Relational algebra uses **set semantics** → **duplicates are eliminated** (unlike SQL's bags).
 - σ picks rows, π picks columns; nest them to do both.
 - × is rarely useful alone but powerful with σ.
-- ⋈ and ⋈_θ are *conveniences* rewritable via × + σ + π.
+- ⋈ and ⋈_θ are _conveniences_ rewritable via × + σ + π.
 - In real database systems, "join" usually means **theta join.**
 
 ### Quick symbol reference
-| Symbol | Name | Meaning |
-|--------|------|---------|
-| σ | sigma | select (rows) |
-| π | pi | project (columns) |
-| × | times | cross-product |
-| ⋈ | bow tie | natural join |
-| ⋈_θ | bow tie + theta | theta join |
-| ∧ ∨ ¬ | caret / etc. | AND, OR, NOT |
-| ∪ | union | set union (on schemas/relations) |
+
+|Symbol|Name|Meaning|
+|---|---|---|
+|σ|sigma|select (rows)|
+|π|pi|project (columns)|
+|×|times|cross-product|
+|⋈|bow tie|natural join|
+|⋈_θ|bow tie + theta|theta join|
+|∧ ∨ ¬|caret / etc.|AND, OR, NOT|
+|∪|union|set union (on schemas/relations)|
 
 ---
 
-*Next video (Part 2): additional relational algebra operators and alternative notations.*
+_Next video (Part 2): additional relational algebra operators and alternative notations._

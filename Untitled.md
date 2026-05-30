@@ -91,6 +91,47 @@ Human-written
 
 
 
+### `Student`
+| A   | B   |
+| --- | --- |
+| a_1 | b_1 |
+| a_2 | b_2 |
+
+
+| C   | D   |
+| --- | --- |
+| c_1 | d_1 |
+| c_2 | d_2 |
+
+
+Here is the cross product and natural join for your tables.
+
+### Cross Product ($R_1 \times R_2$)
+
+The cross product combines every row from the first table with every row from the second table. Because both of your tables have two rows, the resulting table yields four rows ($2 \times 2 = 4$). It includes all columns from both relations.
+
+|**A**|**B**|**C**|**D**|
+|---|---|---|---|
+|a_1|b_1|c_1|d_1|
+|a_1|b_1|c_2|d_2|
+|a_2|b_2|c_1|d_1|
+|a_2|b_2|c_2|d_2|
+
+### Natural Join ($R_1 \bowtie R_2$)
+
+A natural join evaluates tables to find columns that share the exact same name. Your first relation contains columns **A** and **B**, and your second relation contains columns **C** and **D**.
+
+Because your tables do not share any column names, the operation has no conditions to evaluate for a match. In relational algebra, when two relations have zero common attributes, the natural join behaves exactly like a cross product.
+
+The result is identical to the table above.
+
+|**A**|**B**|**C**|**D**|
+|---|---|---|---|
+|a_1|b_1|c_1|d_1|
+|a_1|b_1|c_2|d_2|
+|a_2|b_2|c_1|d_1|
+|a_2|b_2|c_2|d_2|
+
 
 
 

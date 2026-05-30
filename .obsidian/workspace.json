@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Untitled.md",
+                "file": "CSC404 - DATA MANAGEMENT II/WEEK1 relational-algebra-notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled"
+              "title": "WEEK1 relational-algebra-notes"
             }
           },
           {
@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSC482 - MODELLING AND SIMULATION/WEEK_3_Improved.md",
+                "file": "CSC404 - DATA MANAGEMENT II/WEEK 5 Constraints and Triggers.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "WEEK_3_Improved"
+              "title": "WEEK 5 Constraints and Triggers"
             }
           }
         ],
@@ -251,16 +251,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1044f110f49ee92a",
+  "active": "03c3c458d7b3e820",
   "lastOpenFiles": [
-    "CSC404 - DATA MANAGEMENT II/WEEK3 Relational Design Theory.md",
-    "CSC482 - MODELLING AND SIMULATION/Questions.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK4 Indexes.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK 5 Constraints and Triggers.md",
     "CSC404 - DATA MANAGEMENT II/WEEK2 relational-algebra-notes-part2.md",
     "CSC404 - DATA MANAGEMENT II/WEEK1 relational-algebra-notes.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK3 Relational Design Theory.md",
+    "Untitled.md",
+    "Untitled.canvas",
     "CSC482 - MODELLING AND SIMULATION/WEEK_3_Improved.md",
+    "CSC482 - MODELLING AND SIMULATION/Questions.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK_2_Improved.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK_1_Improved.md",
-    "Untitled.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK 4.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK_4_Improved.md",
     "Untitled 1.md",
@@ -279,7 +282,6 @@
     "CSC482 - MODELLING AND SIMULATION/WEEK 1.md",
     "CSC482 - MODELLING AND SIMULATION",
     "CSC404 - DATA MANAGEMENT II/Relational Design Theory 1.md",
-    "Untitled.canvas",
     "CSC402 - DATA MANAGEMENT II/Relational Design Theory.md",
     "CSC404 - DATA MANAGEMENT II/resources/Relational_Design_Theory.pdf",
     "CSC404 - DATA MANAGEMENT II/resources",
@@ -287,7 +289,6 @@
     "CSC452 - FORMAL METHODS",
     "CSC404 - FORMAL METHODS/Parity Bits.md",
     "CSC404 - FORMAL METHODS/Formal Proofs.md",
-    "CSC4XX-FORMAL METHODS/Parity Bits.md",
-    "CSC4XX-FORMAL METHODS/Formal Proofs.md"
+    "CSC4XX-FORMAL METHODS/Parity Bits.md"
   ]
 }
