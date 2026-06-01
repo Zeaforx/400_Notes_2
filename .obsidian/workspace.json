@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSC404 - DATA MANAGEMENT II/WEEK 5 Constraints and Triggers.md",
+                "file": "CSC404 - DATA MANAGEMENT II/WEEK5 Constraints and Triggers.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "WEEK 5 Constraints and Triggers"
+              "title": "WEEK5 Constraints and Triggers"
             }
           }
         ],
@@ -253,8 +253,9 @@
   },
   "active": "03c3c458d7b3e820",
   "lastOpenFiles": [
+    "CSC404 - DATA MANAGEMENT II/SQL_Demo_CSC404_watermark .pdf",
     "CSC404 - DATA MANAGEMENT II/WEEK4 Indexes.md",
-    "CSC404 - DATA MANAGEMENT II/WEEK 5 Constraints and Triggers.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK5 Constraints and Triggers.md",
     "CSC404 - DATA MANAGEMENT II/WEEK2 relational-algebra-notes-part2.md",
     "CSC404 - DATA MANAGEMENT II/WEEK1 relational-algebra-notes.md",
     "CSC404 - DATA MANAGEMENT II/WEEK3 Relational Design Theory.md",
@@ -288,7 +289,6 @@
     "CSC404 - DATA MANAGEMENT II",
     "CSC452 - FORMAL METHODS",
     "CSC404 - FORMAL METHODS/Parity Bits.md",
-    "CSC404 - FORMAL METHODS/Formal Proofs.md",
-    "CSC4XX-FORMAL METHODS/Parity Bits.md"
+    "CSC404 - FORMAL METHODS/Formal Proofs.md"
   ]
 }
