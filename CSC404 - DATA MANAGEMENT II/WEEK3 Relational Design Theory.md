@@ -131,11 +131,11 @@ Multiple attributes are allowed on either side: `A₁, A₂ → B₁, B₂`.
 
 ### Types of FDs
 
-|Type|Definition|Example|
-|---|---|---|
-|**Trivial**|`A → B` where `B ⊆ A` (RHS already inside LHS)|`{SSN, sName} → sName`|
-|**Non-trivial**|`A → B` where at least some of `B` is not in `A`|`SSN → sName`|
-|**Completely Non-trivial**|`A → B` where `A ∩ B = ∅` (no overlap at all)|`SSN → GPA`|
+| Type                       | Definition                                       | Example                     |
+| -------------------------- | ------------------------------------------------ | --------------------------- |
+| **Trivial**                | `A → B` where `B ⊆ A` (RHS already inside LHS)   | `{SSN, sName} → sName`      |
+| **Non-trivial**            | `A → B` where at least some of `B` is not in `A` | `{SSN,sName} → {sName,GPA}` |
+| **Completely Non-trivial** | `A → B` where `A ∩ B = ∅` (no overlap at all)    | `SSN → GPA`                 |
 
 > For schema design, we primarily care about **completely non-trivial FDs** — these are the ones that tell us something genuinely new.
 
