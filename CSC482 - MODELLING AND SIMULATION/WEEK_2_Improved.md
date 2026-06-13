@@ -117,7 +117,7 @@ $$L_q = \frac{4^2}{6(6 - 4)} = \frac{16}{12} \approx 1.33 \text{ customers}$$
 
 **Interpretation:** On average, about 1.33 customers are waiting in line.
 
-Note that $L_s - L_q = \rho$, since on average $\rho$ of the time someone is being served:
+Note that **$L_s - L_q = \rho$**, since on average $\rho$ of the time someone is being served:
 $$2 - 1.33 = 0.67 \approx \rho \;\checkmark$$
 
 ---
