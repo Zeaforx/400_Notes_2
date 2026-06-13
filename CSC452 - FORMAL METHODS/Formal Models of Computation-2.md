@@ -83,6 +83,8 @@ If $x = 011$, then $x^3 = 011011011$, $x^1 = 011$, and $x^0 = \epsilon$.
 
 You write $\Sigma^k$ to denote the set of strings of length $k$ using symbols from $\Sigma$. The set $\Sigma^0$ always equals $\{\epsilon\}$.
 
+![[Pasted image 20260613103934.png]]
+
 For the binary alphabet $\{0, 1\}$:
 
 - $\Sigma^0 = \{\epsilon\}$  
@@ -161,7 +163,9 @@ Example: If $L = \{a, ab\}$:
 - $L^2 = L L^1 = \{aa, aab, aba, abab\}$  
     
 - $L^3 = L L^2 = \{aaa, aaab, aaba, aabab, abaa, abaab, ababa, ababab\}$  
-    
+
+
+![[Pasted image 20260613103621.png]]
 
 ## 2. Automata Theory Fundamentals
 
@@ -201,7 +205,7 @@ Different automata models play varied roles across practical fields.
 
 ### Basic Automaton Components
 
-Every automaton fulfills basic requirements similar to real computers.
+Every automaton fulfils basic requirements similar to real computers.
 
 1. **Input Tape:** A mechanism for reading a sequence of symbols from an alphabet. Simple machines read left to right without changing the tape. Powerful versions can read in both directions and change the input symbols.
     
@@ -234,6 +238,8 @@ A state represents an instantaneous description of the system holding all releva
 ### Deterministic Finite Automata (DFA)
 
 A DFA operates without any element of choice. It has a finite number of states and arcs, and it acts as an acceptor to produce a yes/no answer.
+
+![[Pasted image 20260613110008.png]]
 
 A DFA is defined precisely by five parts:
 
@@ -271,6 +277,8 @@ You can extend the transition function inductively to process entire strings:
     
 
 **Example DFA Trace:**
+
+![[Pasted image 20260613105157.png]]
 
 Consider a string `1 0 0 1 1 1 0 0` running through a DFA. A sample trace follows this path:
 
@@ -335,11 +343,15 @@ In the Ada programming language, valid identifiers consist of a letter followed 
 
 An NFA makes choices. The transition function maps state and input pairs into sets of possible states. The machine traverses all possible paths in parallel. It allows $\epsilon$ transitions (empty string transitions), letting the machine change states without consuming any input character.
 
+![[Pasted image 20260613110154.png]]
+
 An NFA accepts a string if at least one parallel transition sequence leads to a final state. Multiple transitions on the same character, or zero transitions entirely, are allowed. This looseness makes constructing machines easier, though it does not add computational power over a DFA.
 
 **NFA Example Trace:**
 
 If an NFA receives the input `010` and starts at $q_0$, it might process the first `0` and transition to $q_1$, while also taking an $\epsilon$ transition to $q_3$. Thus, $\delta(q_0, 0) = \{q_1, q_3\}$. It processes `1` to move to $q_0$ and $q_2$. Finally, it processes the last `0`, ending in states $q_1, q_2$, or $q_3$. Because at least one of these is an accept state, it accepts the string. You can also view this as inserting $\epsilon$ symbols into the string to find a valid path: $0 \epsilon 1 0$ gives a path $q_0 \rightarrow q_1 \rightarrow q_3 \rightarrow q_2 \rightarrow q_2$.
+![[Pasted image 20260613111202.png]]
+![[Pasted image 20260613111347.png]]
 
 **Implementing an NFA in Code:**
 
@@ -355,12 +367,17 @@ You can handle nondeterminism using three methods:
 ## 4. Pushdown Automata (PDA)
 
 A DFA cannot recognize context-free languages because a DFA cannot count indefinitely. A DFA cannot process the language $\{a^n b^n \mid n \ge 0\}$ or a language of palindromes $ww^R$. These require a stack.
+![[Pasted image 20260613111528.png]]
 
 A PDA is an NFA with a stack attached. It parses context-free languages, whose structure resembles many modern programming languages. Compilers rely on PDAs for essential architectural features.
 
 ### PDA Operation
 
-A PDA reads an infinitely long tape from left to right. When it reads a blank cell marked with $\Delta$ or $\lambda$, it halts. It cannot reverse directions or write to the tape.
+A PDA reads an infinitely long tape from left to right. When it reads a blank cell marked with $\Delta$ or $\lambda$, it halts. It cannot reverse directions or write to the tape.(https://youtu.be/eY7fwj5jvC4?si=251yb7yzXpndtFUV)
+![[Pasted image 20260613112120.png]]
+![[Pasted image 20260613112803.png]]
+![[Pasted image 20260613112919.png]]
+
 
 The stack provides infinite storage functioning as Last-In, First-Out memory. Processing begins with an empty stack. The machine typically pushes a bottom-of-the-stack marker (like $\Delta$) first. The PDA uses two alphabets: one for tape characters and one for stack characters.
 
@@ -375,11 +392,15 @@ A transition checks the current state, reads the tape cell, and pops the top of 
 3. When you see a $b$, change to state 2 and pop an $A$. Continue popping one $A$ for every $b$ read.
     
 4. If the string is formatted correctly, you will read a $\Delta$ from the tape exactly when you pop the $\Delta$ from the stack. The machine moves to state 3, an accept state.
+
+![[Pasted image 20260613114915.png]]
+
     
 
 ### Types of PDAs
 
 1. **Deterministic PDA (DPDA):** Every input string has exactly one unique path.
+![[Pasted image 20260613115959.png]]
     
 2. **Nondeterministic PDA (NPDA):** The machine chooses among several paths. A string is accepted if at least one path succeeds.
     
