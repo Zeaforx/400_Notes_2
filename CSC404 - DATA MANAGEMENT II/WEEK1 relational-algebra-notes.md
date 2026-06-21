@@ -649,15 +649,15 @@ Relational algebra is a **formal language** that **operates on relations and pro
 
 ### Quick symbol reference
 
-|Symbol|Name|Meaning|
-|---|---|---|
-|σ|sigma|select (rows)|
-|π|pi|project (columns)|
-|×|times|cross-product|
-|⋈|bow tie|natural join|
-|⋈_θ|bow tie + theta|theta join|
-|∧ ∨ ¬|caret / etc.|AND, OR, NOT|
-|∪|union|set union (on schemas/relations)|
+| Symbol | Name            | Meaning                          |
+| ------ | --------------- | -------------------------------- |
+| σ      | sigma           | select (rows)                    |
+| π      | pi              | project (columns)                |
+| ×      | times           | cross-product                    |
+| ⋈      | bow tie         | natural join                     |
+| ⋈_θ    | bow tie + theta | theta join                       |
+| ∧ ∨ ¬  | caret / etc.    | AND, OR, NOT                     |
+| ∪      | union           | set union (on schemas/relations) |
 
 ---
 

@@ -4,15 +4,15 @@
 
 Every system that can be modelled consists of the following seven components. Recognising these in any problem is the first step to building a model of it.
 
-|Component|Description|Example (Bank)|
-|---|---|---|
-|**Input**|What enters the system from the environment.|Customers arriving|
-|**Processor**|The mechanism that transforms inputs into outputs.|Bank tellers serving customers|
-|**Output**|The result produced by the processor.|Served customers leaving|
-|**Control**|Rules or policies governing how the system operates.|FIFO queue discipline; opening hours|
-|**Feedback**|Information about the output that is used to adjust the system.|Queue length data used to open more teller windows|
-|**Environment**|Everything outside the system that can influence it.|Time of day, public holidays, population density|
-|**Boundary**|The line separating what is "inside" the system from what is "outside."|The bank building itself — customers outside are in the environment; customers inside are in the system|
+| Component       | Description                                                             | Example (Bank)                                                                                          |
+| --------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Input**       | What enters the system from the environment.                            | Customers arriving                                                                                      |
+| **Processor**   | The mechanism that transforms inputs into outputs.                      | Bank tellers serving customers                                                                          |
+| **Output**      | The result produced by the processor.                                   | Served customers leaving                                                                                |
+| **Control**     | Rules or policies governing how the system operates.                    | FIFO queue discipline; opening hours                                                                    |
+| **Feedback**    | Information about the output that is used to adjust the system.         | Queue length data used to open more teller windows                                                      |
+| **Environment** | Everything outside the system that can influence it.                    | Time of day, public holidays, population density                                                        |
+| **Boundary**    | The line separating what is "inside" the system from what is "outside." | The bank building itself — customers outside are in the environment; customers inside are in the system |
 
 > **Why this matters for simulation:** When you build a model, you must decide what falls inside the boundary and what does not. A bank simulation might treat "the number of people passing on the street" as environment (outside the boundary) and only model what happens once someone walks through the door (inside the boundary).
 

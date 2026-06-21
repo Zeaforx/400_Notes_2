@@ -219,7 +219,7 @@ For this example, imagine our data also contained a college named _Washington_ (
 
 **Inputs (with the hypothetical Washington rows added):**
 
-|`π_(cName)(College)`||`π_(sName)(Student)`|
+|`π_(cName)(College)`|x|`π_(sName)(Student)`|
 |---|---|---|
 |Stanford||Amy|
 |Berkeley||Bob|

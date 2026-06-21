@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSC482 - MODELLING AND SIMULATION/WEEK_6_REVISION_IMPROVED.md",
+                "file": "CSC404 - DATA MANAGEMENT II/WEEK7 Isolation Levels.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "WEEK_6_REVISION_IMPROVED"
+              "title": "WEEK7 Isolation Levels"
             }
           }
         ],
@@ -237,18 +237,79 @@
       "obsidian-git:Open Git source control": false
     }
   },
+  "floating": {
+    "id": "2aa58b707de8ca35",
+    "type": "floating",
+    "children": [
+      {
+        "id": "c3b626bea9d5f52d",
+        "type": "window",
+        "children": [
+          {
+            "id": "b200b0142da7ab6c",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "b84f67f2c44d996e",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "CSC404 - DATA MANAGEMENT II/Questions.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "Questions"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 448,
+        "y": 164,
+        "width": 1024,
+        "height": 800,
+        "maximize": true,
+        "zoom": 1.5
+      }
+    ]
+  },
   "active": "03c3c458d7b3e820",
   "lastOpenFiles": [
-    "CSC482 - MODELLING AND SIMULATION/WEEK_5_Improved.md",
-    "CSC482 - MODELLING AND SIMULATION/WEEK_6_REVISION_IMPROVED.md",
-    "CSC482 - MODELLING AND SIMULATION/WEEK_4_Improved.md",
-    "CSC482 - MODELLING AND SIMULATION/WEEK_3_Improved.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK7 Isolation Levels.pdf",
+    "CSC404 - DATA MANAGEMENT II/lu11492440j7.tmp",
+    "CSC404 - DATA MANAGEMENT II/WEEK6 Transaction Properties.pdf",
+    "CSC404 - DATA MANAGEMENT II/lu1137343oda.tmp",
+    "CSC404 - DATA MANAGEMENT II/WEEK5 Constraints and Triggers.pdf",
+    "CSC404 - DATA MANAGEMENT II/lu11240436fk.tmp",
+    "CSC404 - DATA MANAGEMENT II/WEEK4 Indexes.pdf",
+    "CSC404 - DATA MANAGEMENT II/lu1110842tvu.tmp",
+    "CSC404 - DATA MANAGEMENT II/WEEK3 Relational Design Theory.pdf",
+    "CSC404 - DATA MANAGEMENT II/lu1097742fin.tmp",
+    "CSC404 - DATA MANAGEMENT II/WEEK2 relational-algebra-notes-part2.pdf",
+    "CSC404 - DATA MANAGEMENT II/WEEK6 Transaction Properties.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK5 Constraints and Triggers.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK4 Indexes.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK3 Relational Design Theory.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK2 relational-algebra-notes-part2.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK1 relational-algebra-notes.md",
+    "CSC404 - DATA MANAGEMENT II/Questions.md",
+    "CSC404 - DATA MANAGEMENT II/Demo.md",
+    "CSC404 - DATA MANAGEMENT II/WEEK7 Isolation Levels.md",
+    "CSC404 - DATA MANAGEMENT II/2025 Past Questions.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK_2_Improved.md",
+    "CSC452 - FORMAL METHODS/Formal Proofs.md",
+    "CSC452 - FORMAL METHODS/Formal Models of Computation-2.md",
+    "CSC452 - FORMAL METHODS/Formal Models of Computation.md",
+    "CSC482 - MODELLING AND SIMULATION/WEEK_5_Improved.md",
+    "CSC482 - MODELLING AND SIMULATION/WEEK_4_Improved.md",
+    "CSC482 - MODELLING AND SIMULATION/WEEK_6_REVISION_IMPROVED.md",
+    "CSC482 - MODELLING AND SIMULATION/WEEK_3_Improved.md",
     "CSC482 - MODELLING AND SIMULATION/WEEK_1_Improved.md",
     "CSC482 - MODELLING AND SIMULATION/extra/Questions.md",
     "assets/Pasted image 20260613103621.png",
-    "CSC452 - FORMAL METHODS/Formal Models of Computation-2.md",
-    "assets",
     "assets/Pasted image 20260613115959.png",
     "assets/Pasted image 20260613114915.png",
     "assets/Pasted image 20260613112919.png",
@@ -258,33 +319,11 @@
     "assets/Pasted image 20260613111347.png",
     "assets/Pasted image 20260613111202.png",
     "assets/Pasted image 20260613110154.png",
-    "CSC452 - FORMAL METHODS/Formal Models of Computation.md",
-    "CSC452 - FORMAL METHODS/Formal Models of Computation.pdf",
-    "CSC482 - MODELLING AND SIMULATION/WEEK_4_Improved.docx",
-    "CSC482 - MODELLING AND SIMULATION/WEEK_3_Improved.docx",
-    "CSC482 - MODELLING AND SIMULATION/WEEK_2_Improved.docx",
     "CSC482 - MODELLING AND SIMULATION/extra/WEEK 1.md",
-    "CSC482 - MODELLING AND SIMULATION/extra/WEEK 1.docx",
-    "CSC482 - MODELLING AND SIMULATION/extra",
-    "CSC452 - FORMAL METHODS/CSC 452 Formal Models of Co Note F.pdf",
-    "CSC452 - FORMAL METHODS/CSC 452 Formal Models of Co ENoteA.pdf",
-    "CSC404 - DATA MANAGEMENT II/WEEK3 Relational Design Theory.md",
-    "CSC404 - DATA MANAGEMENT II/SQL_Demo_CSC404_watermark .pdf",
-    "CSC404 - DATA MANAGEMENT II/WEEK2 relational-algebra-notes-part2.md",
-    "CSC404 - DATA MANAGEMENT II/Demo.md",
-    "CSC404 - DATA MANAGEMENT II/WEEK1 relational-algebra-notes.md",
     "Untitled.md",
     "CSC404 - DATA MANAGEMENT II/Relational Design Theory 1.md",
-    "CSC404 - DATA MANAGEMENT II/WEEK5 Constraints and Triggers.md",
-    "CSC404 - DATA MANAGEMENT II/WEEK4 Indexes.md",
     "Untitled.canvas",
     "CSC482 - MODELLING AND SIMULATION/extra/WEEK 4.md",
-    "Untitled 1.md",
-    "CSC452 - FORMAL METHODS/formal proofs-1.md",
-    "CSC452 - FORMAL METHODS/Languages.md",
-    "CSC452 - FORMAL METHODS/Formal Proofs.md",
-    "CSC452 - FORMAL METHODS/Parity Bits.md",
-    "CSC482 - MODELLING AND SIMULATION/extra/WEEK 3.md",
-    "CSC482 - MODELLING AND SIMULATION/extra/WEEK 2.md"
+    "Untitled 1.md"
   ]
 }
